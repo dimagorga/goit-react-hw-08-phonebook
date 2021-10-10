@@ -1,0 +1,7 @@
+.wrapper{
+    display: flex;
+}
+.userName{
+    color: #3E9F85;
+    margin-right: 10px;
+}

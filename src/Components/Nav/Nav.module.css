@@ -1,0 +1,41 @@
+.header{
+    display: flex;
+    justify-content: space-between;    
+    padding: 15px;
+    background: linear-gradient(to bottom, #d3cce3, #e9e4f0); 
+}
+
+.logo{
+    font-size: 20px;
+    font-weight: 700;
+}
+.logoRight{
+    color: #3E9F85;
+}
+
+.navList{
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+}
+
+.listItem{
+    font-weight: 700;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+transition: all 250ms;
+}
+
+.link:hover{
+    color: white;
+}
+.activeLink{
+    text-decoration: none;
+    color: #3E9F85;
+}
+
+
+

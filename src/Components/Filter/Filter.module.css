@@ -1,0 +1,23 @@
+.label {
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.input {
+  font-size: 12px;
+}
+.input {
+  border: 1px solid #cccccc; 
+  border-radius: 3px;
+  margin-left: 3px ;
+  background: #ffffff;
+  outline: none;
+  height: 15px;
+  width: 100px; 
+  font-size: 12px;
+  transition: all 250ms;
+}
+
+input:focus {
+  border: 1px solid #000000
+}
