@@ -43,6 +43,7 @@ export const userLogOut = () => (dispatch) => {
     dispatch(actions.userLogOutError(error));
   }
 };
+
 export const currentUser = () => (_, getState) => {
   const persistedToken = getState().auth.user.token;
   if (persistedToken === null) {

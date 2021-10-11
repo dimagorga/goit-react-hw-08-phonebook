@@ -1,8 +1,19 @@
+import axios from "axios";
 import * as contactsApi from "../../api/contactsApi";
 import * as actions from "./actions";
 
-export const fetchContacts = () => async (dispatch) => {
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unSet() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
+
+export const fetchContacts = () => async (dispatch, getState) => {
   dispatch(actions.fetchContactsRequest());
+  token.set(getState().auth.user.token);
   try {
     const contacts = await contactsApi.fetchContacts();
     dispatch(actions.fetchContactsSuccess(contacts));

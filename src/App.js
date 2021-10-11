@@ -1,17 +1,17 @@
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Nav from "./Components/Nav/Nav";
 import ContactsPage from "./Components/Pages/ContactsPage/ContactsPage";
 import LoginPage from "./Components/Pages/LoginPage/LoginPage";
 import "./App.css";
 import AuthPage from "./Components/Pages/AuthPage/AuthPage";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import { currentUser } from "./redux/auth/authOperations";
-import { getIsAuth } from "./redux/auth/authSelectors";
+import PublicRoute from "./Components/PublicRoute/PublicRoute";
 
 function App() {
   const dispatch = useDispatch();
-  const isAuth = useSelector(getIsAuth);
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
@@ -20,17 +20,16 @@ function App() {
     <div className="container">
       <Nav />
       <Switch>
-        <Route path="/contacts">
+        <PrivateRoute path="/contacts">
           <ContactsPage />
-        </Route>
-        <Route path="/users/login">
+        </PrivateRoute>
+        <PublicRoute path="/users/login" restricted>
           <LoginPage />
-        </Route>
-        <Route path="/users/signup">
+        </PublicRoute>
+        <PublicRoute path="/users/signup" restricted>
           <AuthPage />
-        </Route>
+        </PublicRoute>
       </Switch>
-      {isAuth ? <Redirect to="/contacts" /> : <Redirect to="/users/login" />}
     </div>
   );
 }

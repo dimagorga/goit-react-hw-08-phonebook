@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../../redux/auth/authOperations";
 import Button from "../../Button/Button";
+import HandleError from "../../HandleError/HandleError";
 
 export default function LoginPage() {
   const [dataForm, setDataForm] = useState({
@@ -50,6 +51,7 @@ export default function LoginPage() {
       <p className={s.registration}>
         Or sign up here <Link to="/users/signup">Sign Up</Link>{" "}
       </p>
+      <HandleError />
     </div>
   );
 }
