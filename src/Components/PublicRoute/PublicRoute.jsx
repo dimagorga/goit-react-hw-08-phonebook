@@ -9,6 +9,7 @@ export default function PublicRoute({
 }) {
   const isAuth = useSelector(getIsAuth);
   const shouldRedirect = isAuth && restricted;
+  console.log(shouldRedirect);
   return (
     <Route {...routeProps}>
       {shouldRedirect ? <Redirect to="/contacts" /> : children}

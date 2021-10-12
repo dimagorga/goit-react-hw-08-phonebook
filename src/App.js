@@ -1,6 +1,6 @@
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Components/Nav/Nav";
 import ContactsPage from "./Components/Pages/ContactsPage/ContactsPage";
 import LoginPage from "./Components/Pages/LoginPage/LoginPage";
@@ -9,8 +9,10 @@ import AuthPage from "./Components/Pages/AuthPage/AuthPage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import { currentUser } from "./redux/auth/authOperations";
 import PublicRoute from "./Components/PublicRoute/PublicRoute";
+import { getIsAuth } from "./redux/auth/authSelectors";
 
 function App() {
+  const isAuth = useSelector(getIsAuth);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(currentUser());
@@ -20,16 +22,17 @@ function App() {
     <div className="container">
       <Nav />
       <Switch>
-        <PrivateRoute path="/contacts">
-          <ContactsPage />
-        </PrivateRoute>
         <PublicRoute path="/users/login" restricted>
           <LoginPage />
         </PublicRoute>
         <PublicRoute path="/users/signup" restricted>
           <AuthPage />
         </PublicRoute>
+        <PrivateRoute path="/contacts">
+          <ContactsPage />
+        </PrivateRoute>
       </Switch>
+      {isAuth ? <Redirect to="/contacts" /> : <Redirect to="/users/login" />}
     </div>
   );
 }
