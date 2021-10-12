@@ -8,6 +8,7 @@ import {
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 import s from "./ContactsList.module.css";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import Button from "../Button/Button";
@@ -24,7 +25,13 @@ function ContactsList() {
   return (
     <ul className={s.list}>
       {isLoading ? (
-        <Loader type="ThreeDots" color="#3E9F85" height={50} width={50} />
+        <Loader
+          className={s.loader}
+          type="ThreeDots"
+          color="#3E9F85"
+          height={50}
+          width={50}
+        />
       ) : (
         contacts.map(({ id, name, number }) => {
           return (
@@ -37,7 +44,7 @@ function ContactsList() {
                 handleClick={(e) => {
                   handleRemove(e.currentTarget.id);
                 }}
-                buttonName="Delete"
+                buttonName={<DeleteIcon />}
                 id={id}
               />
             </li>

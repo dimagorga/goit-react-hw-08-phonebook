@@ -1,6 +1,22 @@
-import s from "./HandleError.module.css";
+// import s from "./HandleError.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
 
 export default function HandleError({ error }) {
-  if (!error) return null;
-  return <h2 className={s.errorMessage}>{error}</h2>;
+  useEffect(() => {
+    if (!error) {
+      return null;
+    } else {
+      return toast.error(`${error}`, {
+        theme: "dark",
+      });
+    }
+  }, [error]);
+
+  return (
+    <div>
+      <ToastContainer />
+    </div>
+  );
 }

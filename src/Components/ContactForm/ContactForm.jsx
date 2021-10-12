@@ -2,9 +2,10 @@ import { v4 as uuidv4 } from "uuid";
 import * as contactsOperations from "../../redux/phonebook/operations";
 import { getContacts } from "../../redux/phonebook/contacts-selectors.js";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import s from "./ContactForm.module.css";
 import Button from "../Button/Button";
-import { useState } from "react";
+import TextField from "@mui/material/TextField";
 
 function ContactForm() {
   const [name, setName] = useState("");
@@ -52,30 +53,31 @@ function ContactForm() {
 
   return (
     <form className={s.form} onSubmit={onSubmit}>
-      <label htmlFor={uuidv4()}>
-        Name
-        <input
-          className={s.input}
-          type="text"
-          onChange={handleChange}
+      <label className={s.input}>
+        <TextField
+          size="small"
+          required
+          id={uuidv4()}
           name="name"
           value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          label="Name"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
+          onChange={handleChange}
+          variant="filled"
         />
       </label>
-      <label htmlFor={uuidv4()}>
-        Number
-        <input
-          className={s.input}
-          type="tel"
-          onChange={handleChange}
+      <label className={s.input}>
+        <TextField
+          size="small"
+          required
+          id={uuidv4()}
           name="number"
+          label="Number"
           value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-          required
+          onChange={handleChange}
+          variant="filled"
         />
       </label>
       <Button type="submit" buttonName="Add contact" />

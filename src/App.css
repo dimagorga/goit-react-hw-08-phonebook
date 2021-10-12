@@ -1,10 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
 h1,
 h2,
@@ -22,7 +16,7 @@ ul {
 .container{
   width: 1200px;
   margin: 0 auto;
-  background-color: whitesmoke;
+  background-color: rgba(245, 245, 245, 0.582);
 }
 
 

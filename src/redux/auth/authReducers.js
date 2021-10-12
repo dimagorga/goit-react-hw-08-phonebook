@@ -18,9 +18,15 @@ const userReducer = createReducer(iS, {
   [actions.userRegisterSuccess]: (_, { payload }) => payload,
   [actions.userLogOutSuccess]: () => iS,
 });
+const errorReduser = createReducer(null, {
+  [actions.userRegisterError]: (_) =>
+    "A user with this e-mail address already exists",
+  [actions.userLoginError]: (_) => "Invalid login or password.",
+});
 
 const authReducer = combineReducers({
   user: userReducer,
   isAuth: isAuth,
+  error: errorReduser,
 });
 export default authReducer;

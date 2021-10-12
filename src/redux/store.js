@@ -16,6 +16,7 @@ import contacts from "./phonebook/reducers";
 const contatcsPersistConfig = {
   key: "auth",
   storage,
+  blacklist: ["error"],
 };
 
 export const store = configureStore({

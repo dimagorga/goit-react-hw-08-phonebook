@@ -11,17 +11,10 @@
 .input {
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  border: 1px solid #cccccc; 
-  border-radius: 3px;
-  background: #ffffff;
-  outline: none;
-  height: 24px;
+  margin-bottom: 10px;
   width: 200px; 
   font-size: 14px;
-  transition: all 250ms;
+  background-color: #b3f3e242;
+
 }
 
-input:focus {
-  border: 1px solid #000000
-}
