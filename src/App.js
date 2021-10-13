@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Components/Nav/Nav";
 import ContactsPage from "./Components/Pages/ContactsPage/ContactsPage";
-import LoginPage from "./Components/Pages/LoginPage/LoginPage";
 import "./App.css";
 import AuthPage from "./Components/Pages/AuthPage/AuthPage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
@@ -22,10 +21,7 @@ function App() {
     <div className="container">
       <Nav />
       <Switch>
-        <PublicRoute path="/users/login" restricted>
-          <LoginPage />
-        </PublicRoute>
-        <PublicRoute path="/users/signup" restricted>
+        <PublicRoute path="/users/:authType" restricted>
           <AuthPage />
         </PublicRoute>
         <PrivateRoute path="/contacts">

@@ -15,19 +15,9 @@
     width: 300px;
     margin: 0 auto;
 }
-.input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 300px;
-  font-size: 14px;
-  
-}
 
-
-.registration{
+.registration {
   text-align: center;
   margin-top: 10px;
   font-size: 14px;
 }
-

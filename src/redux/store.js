@@ -30,6 +30,7 @@ export const store = configureStore({
         // Ignore these action types
         ignoredActions: [
           "contacts/filterContact",
+          "auth/userRefreshSuccess",
           "auth/userLogOutSuccess",
           FLUSH,
           REHYDRATE,

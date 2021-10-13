@@ -44,15 +44,16 @@ export const userLogOut = () => (dispatch) => {
   }
 };
 
-export const currentUser = () => (_, getState) => {
+export const currentUser = () => (dispatch, getState) => {
+  dispatch(actions.userRefreshRequest());
   const persistedToken = getState().auth.user.token;
   if (persistedToken === null) {
     return;
   }
   token.set(persistedToken);
   try {
-    contactsApi.fetchCurrentUser();
+    dispatch(actions.userRefreshSuccess(contactsApi.fetchCurrentUser()));
   } catch (error) {
-    return error;
+    dispatch(actions.userRefreshError(error));
   }
 };
